@@ -7,19 +7,19 @@ import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faUser} from '@fortawesome/free-solid-svg-icons';
 import {getAuth, signInWithPopup, GoogleAuthProvider} from 'firebase/auth';
 import {app} from '../lib/firebase'
+import toast from 'react-hot-toast'
 
 
 const Navbar = () => {
-    const user = null
-    const username = null
 
     const auth = getAuth(app)
     const provider = new GoogleAuthProvider()
 
-    {/*Sign in with Google*/}
+    // Sign in with Google
     const handleSignIn = async () => {
         try {
             await signInWithPopup(auth, provider)
+            toast.success('welcome!')
         } catch (err) {
             alert(err.message)
         }
@@ -52,21 +52,18 @@ const Navbar = () => {
                 <ul>
                     <li>
                         <Link href="/login" passHref>
-                            <a>
-                                <Button
-                                    onClick={handleSignIn}
-                                    className={styles.login}
-                                    bg="steelblue"
-                                    color="white"
-                                    size="sm"
-                                    _hover={{
-                                        bg: '#3b6cb3c9',
-                                        color: 'white',
-                                    }}
-                                >
-                                    Login
-                                </Button>
-                            </a>
+                            <Button
+                                className={styles.login}
+                                bg="steelblue"
+                                color="white"
+                                size="sm"
+                                _hover={{
+                                    bg: '#3b6cb3c9',
+                                    color: 'white',
+                                }}
+                            >
+                                Login
+                            </Button>
                         </Link>
                     </li>
                     <li>
