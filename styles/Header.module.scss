@@ -21,7 +21,6 @@
       grid-area: left;
       align-self: center;
 
-
       ul {
         display: flex;
         align-items: center;
@@ -29,33 +28,8 @@
         li {
           padding: 0 1.5rem;
         }
-
-        .logoClass {
-          color: steelblue;
-          height: 1.5rem;
-        }
       }
     }
-
-    .innerContainer {
-      display: grid;
-      grid-template-areas:
-  'logo name';
-
-      .innerContainerLogo {
-        padding-right: .25rem;
-        grid-area: logo;
-        align-self: center;
-      }
-
-      .innerContainerName {
-        font-size: 1.5rem;
-        font-weight: bold;
-        grid-area: name;
-        align-self: center;
-      }
-    }
-
 
     .navGridRight {
       grid-area: right;
@@ -67,7 +41,7 @@
         align-items: center;
 
         li {
-          padding: 0 1.5rem;
+          padding: 0 .5rem;
         }
       }
     }
@@ -82,15 +56,11 @@
 
     padding: 1rem 0 0 0;
 
-    #logoId {
-      height: 1.25rem
-    }
-
     .nav ul a > * {
       font-size: .8rem;
     }
 
-    .blogButton {
+    .login {
       font-size: .8rem;
       height: 1.75rem;
       width: 3rem;

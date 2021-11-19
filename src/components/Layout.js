@@ -3,7 +3,6 @@ import styles from '@/styles/Layout.module.scss'
 import Header from '@/components/Header'
 
 const Layout = ({title, description, keywords, children}) => {
-
     return (
         <>
             <Head>
