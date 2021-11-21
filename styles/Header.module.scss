@@ -1,71 +1,12 @@
-
 .header {
-  min-height: 5vh;
-  padding: 1rem 2rem;
   height: auto;
-
-
-  .nav {
-    padding: .5rem 1rem;
-    display: grid;
-    grid-template-areas:
-  'left right';
-
-
-    li {
-      list-style: none;
-      font-size: 1.25rem;
-    }
-
-    .navGridLeft {
-      grid-area: left;
-      align-self: center;
-
-      ul {
-        display: flex;
-        align-items: center;
-
-        li {
-          padding: 0 1.5rem;
-        }
-      }
-    }
-
-    .navGridRight {
-      grid-area: right;
-      align-self: center;
-
-      ul {
-        display: flex;
-        justify-content: flex-end;
-        align-items: center;
-
-        li {
-          padding: 0 .5rem;
-        }
-      }
-    }
-
-  }
-
+  min-height: 10vh;
 }
 
 //media queries
 @media (max-width: 768px) {
   .header {
-
     padding: 1rem 0 0 0;
-
-    .nav ul a > * {
-      font-size: .8rem;
-    }
-
-    .login {
-      font-size: .8rem;
-      height: 1.75rem;
-      width: 3rem;
-    }
-
   }
 }
 

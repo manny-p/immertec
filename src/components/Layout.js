@@ -1,35 +1,19 @@
-import Head from 'next/head'
-import styles from '@/styles/Layout.module.scss'
-import Header from '@/components/Header'
+import {Box} from '@chakra-ui/react'
 
-const Layout = ({title, description, keywords, children}) => {
-
-    // todo: add seo meta tags
-
+const Layout = ({opacity, zIndex, props, children}) => {
     return (
-        <>
-            <Head>
-                <title>{title}</title>
-                <meta name="description" content={description}/>
-                <meta name="keywords" content={keywords}/>
-                <link rel="icon" href={'/favicon.ico'}/>
-
-            </Head>
-
-            <main className={styles.layoutContainer}>
-                <Header/>
-                <div>
-                    {children}
-                </div>
-            </main>
-        </>
+        <Box
+            opacity={opacity}
+            zIndex={zIndex}
+            minHeight={'90vh'}
+            display={'flex'}
+            flexDirection={'column'}
+            width={'100vw'}
+            {...props}
+        >
+            {children}
+        </Box>
     )
 }
-
-Layout.defaultProps = {
-    title: 'Immertec',
-    description: 'Immertec Coding Challenge',
-    keywords: 'Immertec Real-Time Virtual Surgery Training'
-}
-
 export default Layout
+

@@ -7,14 +7,14 @@ import {
   Text,
   useColorModeValue as mode,
 } from '@chakra-ui/react'
-import * as React from 'react'
+
 import { InputField } from './InputField'
 
 export const SigninForm = () => {
   return (
     <form
       onSubmit={(e) => {
-        // add submit logic here
+        // add submit logic
         e.preventDefault()
       }}
     >
@@ -47,7 +47,7 @@ export const SigninForm = () => {
       >
         <Text color={mode('gray.600', 'gray.400')} fontSize="sm" fontWeight="semibold">
           New user?{' '}
-          <Box as="a" href="#" color={mode('blue.600', 'blue.300')}>
+          <Box as="a" href="/" color={mode('blue.600', 'blue.300')}>
             Create account
           </Box>
         </Text>
