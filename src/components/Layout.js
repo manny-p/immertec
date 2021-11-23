@@ -1,11 +1,12 @@
 import {Box} from '@chakra-ui/react'
+import Footer from '@/components/Footer';
 
 const Layout = ({opacity, zIndex, props, children}) => {
     return (
         <Box
             opacity={opacity}
             zIndex={zIndex}
-            minHeight={'90vh'}
+            minHeight={'100vh'}
             display={'flex'}
             flexDirection={'column'}
             width={'100vw'}

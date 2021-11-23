@@ -2,7 +2,7 @@ import {initializeApp} from 'firebase/app'
 import {getAuth, signOut, GoogleAuthProvider, signInWithPopup} from 'firebase/auth'
 import toast from 'react-hot-toast'
 import {Button} from '@chakra-ui/react'
-import {GoogleLoginButton} from '@/components/GoogleLoginButton';
+import GoogleLoginButton from '@/components/GoogleLoginButton';
 
 
 const firebaseConfig = {
@@ -18,8 +18,8 @@ const app = initializeApp(firebaseConfig)
 
 
 // Sign in with Google
-export const SignInWithGoogleButton = () => {
-    const signInWithGoogle = async () => {
+export const SignInWithGoogleButton = ({link}) => {
+    const handleGoogleAuth = async () => {
         const auth = getAuth(app)
         const provider = new GoogleAuthProvider()
 
@@ -31,13 +31,12 @@ export const SignInWithGoogleButton = () => {
         }
     }
     return (
-            <GoogleLoginButton onClick={signInWithGoogle}/>
+        <GoogleLoginButton link={link} onClick={handleGoogleAuth}/>
     )
 }
 
 export const SignOutButton = () => {
     const auth = getAuth(app)
-
     return (
         <Button onClick={() => signOut(auth)}>Sign Out</Button>
     )

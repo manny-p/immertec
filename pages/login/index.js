@@ -4,8 +4,13 @@ import SEO from '@/components/SEO'
 // import Layout from '@/components/Layout'
 
 
-
 export default function RenderLoginPage() {
+
+    // {user ?
+    //     username && <SignOutButton/>
+    //     :
+    //     <SignInWithGoogleButton/>
+    // }
 
     /** @param case1 */
     // if user signed in but missing username then show <UsernameForm/>
@@ -14,13 +19,13 @@ export default function RenderLoginPage() {
 
     /** @param case2 */
     // if user signed in and has username then show <SignOutButton/>
-    // const user = true
-    // const username = true
+    const user = true
+    const username = true
 
     /** @param case3 */
         // if user is signed out then show <SignInWithGoogleButton/>
-    const user = null
-    const username = null
+    // const user = null
+    // const username = null
 
     return (
         <>
@@ -122,15 +127,22 @@ export default function RenderLoginPage() {
                                 mb="10"
                             >
 
-                                {user ?
-                                    !username && <UsernameForm/> // if user signed in but missing username then show <UsernameForm/>
-                                    :
-                                    <SignInWithGoogleButton/> // otherwise no user and show Sign In
-                                }
+                                {/*{user ?*/}
+                                {/*    !username && <UsernameForm/> // if user signed in but missing username then show <UsernameForm/>*/}
+                                {/*    :*/}
+                                {/*    <SignInWithGoogleButton/> // otherwise no user and show Sign In*/}
+                                {/*}*/}
 
+                                {/* (Logical AND) && */}
                                 {/* sign out */}
-                                {user &&
-                                    username && <SignOutButton/> //
+                                {/*{user &&*/}
+                                {/*username && <SignOutButton/>*/}
+                                {/*}*/}
+
+                                {user ?
+                                    username && <SignOutButton/>
+                                    :
+                                    <SignInWithGoogleButton/>
                                 }
 
                                 {/*{user ?*/}

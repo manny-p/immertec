@@ -1,10 +1,10 @@
-import logo from '@/assets/immertec.png'
+import iconLogo from '@/assets/iconLogo.png'
 import Image from 'next/image'
 
 const CompanyLogo = ({height, width, props}) =>
     <>
         <Image
-            src={logo}
+            src={iconLogo}
             alt="Immertec"
             height={height}
             width={width}
