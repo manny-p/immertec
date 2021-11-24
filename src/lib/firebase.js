@@ -1,4 +1,5 @@
 import {initializeApp} from 'firebase/app'
+import {getFirestore} from 'firebase/firestore'
 import {getAuth, signOut, GoogleAuthProvider, signInWithPopup} from 'firebase/auth'
 import toast from 'react-hot-toast'
 import {Button} from '@chakra-ui/react'
@@ -14,7 +15,13 @@ const firebaseConfig = {
     appId: '1:716791695680:web:db611db90951473782d2a5'
 }
 
-const app = initializeApp(firebaseConfig)
+export const app = initializeApp(firebaseConfig)
+
+const db = getFirestore()
+
+console.log('Line: 22', db)
+
+export {db}
 
 
 // Sign in with Google
@@ -42,7 +49,6 @@ export const SignOutButton = () => {
     )
 }
 
-
 export const UsernameForm = () => {
     return (
         <>
@@ -51,22 +57,3 @@ export const UsernameForm = () => {
         </>
     )
 }
-
-
-// replace firebase v8 with v9
-
-// import { GoogleAuthProvider } from "firebase/auth"
-// import firebase from 'firebase/compat/app'
-// import 'firebase/compat/auth'
-// import 'firebase/compat/firestore'
-// import 'firebase/compat/storage'
-
-// if (!firebase.apps.length) {
-//     firebase.initializeApp(firebaseConfig)
-// }
-
-// const provider = new GoogleAuthProvider()
-
-// export const auth = firebase.auth()
-// export const firestore = firebase.firestore()
-// export const storage = firebase.storage()

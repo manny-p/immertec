@@ -1,87 +1,43 @@
 import * as React from 'react'
-import Link from 'next/Link'
+import {useCollection} from '/src/hooks/useCollection';
+
+// import data from '/src/data/data.json'
 import {useRouter} from 'next/router'
 import {Box, Button, Flex, SimpleGrid, useColorModeValue} from '@chakra-ui/react'
 import {CardWithAvatar} from '@/components/CardWithAvatar'
 import {UserInfo} from '@/components/UserInfo'
 import Layout from '@/components/Layout'
 import Loader from '@/components/Loader'
-import data from '../../src/data/data.json'
+
 
 function renderDashboardPage() {
 
+    const {users} = useCollection()
+    console.log('Line: 18', users)
+
     const router = useRouter()
-
-    console.log('() => renderDashboardPage, Line 15'
-        , router)
-
-    // let data
-
-    // permissions
-    // const isAdmin = false
-    const isAdmin = true
-
-    // const hasUsername = true
-
-    // const username = {}
-    // username.id = 90324
-
-    const username = {
-        id: 90324
-    }
-
-    const {id} = username
-    // console.log('() => renderDashboardPage, Line 34'
-    //     , id)
-
 
     return (
         <div>
             <Layout
-                // props={{bg: useColorModeValue('gray.100', 'gray.800')}}
-                props={{bg: '#a04a4a'}}
+                props={{bg: useColorModeValue('gray.100', 'gray.800')}}
             >
-                <Box
-                    bg={useColorModeValue('gray.100', 'gray.800')}
-                    px={{
-                        base: '6',
-                        md: '8',
-                    }}
-                    py="12"
-                >
-                    <Flex
-                        direction="column"
-                        align="center"
-                        rounded="md"
-                        padding="8"
-                    >
-
-                        {/*Todo: add error handling for no user found, redirect to login page with alert*/}
-
-                        <h1>{`Logged in as user id: ${username.id}`}</h1>
-
-                        {/*add condition rendering for users and admins */}
-
-                        {
-                            !isAdmin ?
-                                <h1>{`Access Type: User`}</h1>
-                                :
-                                <>
-                                    <h1>{`Access Type: Admin`}</h1>
-                                    <Button
-                                        mt={4}
-                                        bg={'#2b908b'}
-                                        color={'#fff'}
-                                    >
-                                        Edit Team Profiles
-                                    </Button>
-                                </>
+                <Flex justifyContent="end" p="1rem">
+                    {users &&
+                    users.map(user => {
+                            const {isAdmin, id} = user
+                            return (
+                                <div key={id}>
+                                    {isAdmin && <Button mt={4} bg={'#2b908b'} color={'#fff'}>Edit Team Profiles</Button>}
+                                </div>
+                            )
                         }
-
-                    </Flex>
-                </Box>
+                    )
+                    }
+                </Flex>
                 <Box
-                    bg={'rgba(190,134,38,0.93)'}
+                    bg={'rgb(174,208,206)'}
+                    minH="20vh"
                 >
                     <Box
                         as="section"
@@ -92,7 +48,7 @@ function renderDashboardPage() {
                         mx="auto"
                     >
                         {
-                            !data ?
+                            !users ?
                                 <Flex
                                     align="center"
                                     justify="center"
@@ -101,25 +57,31 @@ function renderDashboardPage() {
                                     <Loader show/>
                                 </Flex>
                                 :
-                                <SimpleGrid
-                                    columns={{
-                                        base: 1,
-                                        md: 3,
-                                    }}
-                                    spacing="6"
+                                // <SimpleGrid
+                                //     columns={{
+                                //         base: 1,
+                                //         md: 3,
+                                //     }}
+                                //     spacing="6"
+                                // >
+                                <Flex
+                                    align="center"
+                                    justify="center"
+                                    wrap="wrap"
                                 >
                                     {
-                                        data.map((user) => {
+                                        users.map(user => {
+
                                             const url = {
                                                 pathname: '/[username]',
-                                                query: {username: id},
+                                                query: {username: user.id},
                                             }
-                                            const {name, bio, src, isAdmin} = user
 
+                                            const {name, bio, src, isAdmin} = user
 
                                             return (
                                                 <CardWithAvatar
-                                                    key={name}
+                                                    key={user.id}
                                                     avatarProps={{
                                                         src,
                                                         name,
@@ -127,16 +89,10 @@ function renderDashboardPage() {
                                                 >
                                                     <UserInfo mt="3" name={name} bio={bio} isAdmin={isAdmin}/>
 
-
                                                     <Button
                                                         onClick={() => {
                                                             router.push(url)
                                                         }}
-
-                                                        // router.push({
-                                                        //     pathname: '/[username]',
-                                                        //     query: {username: id},
-                                                        // })
 
                                                         variant="outline"
                                                         colorScheme="blue"
@@ -144,14 +100,15 @@ function renderDashboardPage() {
                                                         size="sm"
                                                         width="full"
                                                     >
-                                                            View Profile
+                                                        View Profile
                                                     </Button>
 
                                                 </CardWithAvatar>
                                             )
                                         })
                                     }
-                                </SimpleGrid>
+                                </Flex>
+                            // </SimpleGrid>
                         }
                     </Box>
                 </Box>
@@ -163,33 +120,5 @@ function renderDashboardPage() {
 export default renderDashboardPage
 
 
-// const users = [
-// {
 
-//         isAdmin: false,
-//         id: 7438734
-//     },
-//     {
-//         isAdmin: false,
-//         id: 6394001
-//     }
-// ]
 
-// <Loader show
-// props={{mt:'5rem'}}
-// />
-//
-// {!isAdmin ?
-//     isUser &&
-//     <>
-//         <h1>Access Type: User</h1>
-//         <h1>{`User ID: ${username.id}`}</h1>
-//     </>
-//     :
-//     <>
-//         <h1>Access Type: Admin</h1>
-//
-//         <Button>Edit Team Profiles</Button>
-//
-//     </>
-// }
