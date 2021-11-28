@@ -5,7 +5,6 @@ import toast from 'react-hot-toast'
 import {Button} from '@chakra-ui/react'
 import GoogleLoginButton from '@/components/GoogleLoginButton';
 
-
 const firebaseConfig = {
     apiKey: 'AIzaSyAxB8GRSk64vvcp6YEtojgpVj3TjoXCOwo',
     authDomain: 'immertec-c5ec7.firebaseapp.com',

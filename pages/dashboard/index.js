@@ -9,7 +9,6 @@ import {UserInfo} from '@/components/UserInfo'
 import Layout from '@/components/Layout'
 import Loader from '@/components/Loader'
 
-
 function renderDashboardPage() {
 
     const {users} = useCollection()
