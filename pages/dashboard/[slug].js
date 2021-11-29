@@ -1,6 +1,5 @@
 import {useRouter} from 'next/router'
 import {useCollection} from '@/hooks/useCollection'
-import Layout from '@/components/layout/Layout'
 import Loader from '@/components/shared/Loader'
 import {CardWithAvatar} from '@/components/dashboard/CardWithAvatar'
 import {UserInfo} from '@/components/dashboard/UserInfo'

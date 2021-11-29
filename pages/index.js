@@ -1,5 +1,7 @@
+import {useState} from 'react'
+import {useSignup} from '@/hooks/useSignup'
 import Link from 'next/link'
-import {Box, Heading, LightMode, Stack, Text, useColorModeValue} from '@chakra-ui/react'
+import {Box, Heading, LightMode, Stack, Text, useColorModeValue, VisuallyHidden} from '@chakra-ui/react'
 import Layout from '@/components/layout/Layout'
 import SEO from '@/components/layout/SEO'
 import {Card} from '@/components/shared/Card'
@@ -7,9 +9,13 @@ import CompanyLogo from '@/components/shared/CompanyIconLogo'
 import Footer from '@/components/layout/Footer'
 import {EmailLoginForm} from '@/components/shared/EmailLoginForm'
 import {ContinueWithGoogle} from '@/components/shared/ContinueWithGoogle'
+import {DividerWithText} from '@/components/shared/DividerWithText';
 
 
 export default function Home() {
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
+    const {error, signup} = useSignup()
 
     return (
         <>
@@ -42,11 +48,15 @@ export default function Home() {
                                 </Text>
                             </Stack>
 
+
+                            <EmailLoginForm onSubmit={(e) => e.preventDefault()}/>
+
                             <LightMode>
+                            <DividerWithText mt="6">or continue with</DividerWithText>
+                                <VisuallyHidden>Login with Google</VisuallyHidden>
                                 <ContinueWithGoogle/>
                             </LightMode>
 
-                            <EmailLoginForm onSubmit={(e) => e.preventDefault()}/>
                             <Box fontSize="sm">
                                 <Text fontWeight="medium" color={useColorModeValue('gray.600', 'gray.400')}>
                                     Already have an account?

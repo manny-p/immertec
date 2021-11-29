@@ -1,6 +1,6 @@
 import {initializeApp} from 'firebase/app'
 import {getFirestore} from 'firebase/firestore'
-import {getAuth, GoogleAuthProvider, onAuthStateChanged} from 'firebase/auth'
+import {getAuth, GoogleAuthProvider} from 'firebase/auth'
 
 const firebaseConfig = {
     apiKey: 'AIzaSyAxB8GRSk64vvcp6YEtojgpVj3TjoXCOwo',
@@ -17,10 +17,6 @@ export const auth = getAuth(app)
 
 export const provider = new GoogleAuthProvider()
 
-const db = getFirestore()
+export const db = getFirestore()
 
-console.log(db)
-export {db}
-
-export const userStateChange = (param) => onAuthStateChanged(auth, param)
 
