@@ -8,7 +8,7 @@ import {useCollection} from '@/hooks/useCollection'
 
 export const ContinueWithGoogle = () => {
 
-    const {users} = useCollection()
+    const {users} = useCollection('users')
     const router = useRouter()
 
 // Sign in with Google

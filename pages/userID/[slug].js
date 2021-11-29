@@ -4,10 +4,11 @@ import {CardWithAvatar} from '@/components/userID/CardWithAvatar'
 import {UserInfo} from '@/components/userID/UserInfo'
 import {CardContent} from '@/components/userID/CardContent'
 import {HiPencilAlt} from 'react-icons/hi'
-import {useCollection} from '@/hooks/useCollection'
+
 import Layout from '@/components/layout/Layout'
 import Loader from '@/components/shared/Loader'
 import faker from 'faker'
+import {useCollection} from '@/hooks/useCollection';
 
 
 export default function RenderUserIdProfilePage() {

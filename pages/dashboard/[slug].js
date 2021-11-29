@@ -1,19 +1,19 @@
 import {useRouter} from 'next/router'
 import {useCollection} from '@/hooks/useCollection'
-// import {useCollection} from 'src/hooks/useCollection'
-import Layout from '@/components/Layout'
-import Loader from '@/components/Loader'
+import Layout from '@/components/layout/Layout'
+import Loader from '@/components/shared/Loader'
 import {CardWithAvatar} from '@/components/dashboard/CardWithAvatar'
 import {UserInfo} from '@/components/dashboard/UserInfo'
-import CustomButton from '@/components/CustomButton'
-import Container from '@/components/Container'
+import CustomButton from '@/components/shared/CustomButton'
+import Container from '@/components/layout/Container'
 import Sidebar from '@/components/sidebar/Sidebar'
 import {Box, Button, Flex, Stack, SimpleGrid, useColorModeValue} from '@chakra-ui/react'
 
 
-export default function renderUserDashboard() {
-    let {users} = useCollection('users')
-    let router = useRouter()
+export default function RenderUserDashboard() {
+
+    const {users} = useCollection('users')
+    const router = useRouter()
 
     const loggedInAsUser = router.query?.slug
 
@@ -116,6 +116,7 @@ export default function renderUserDashboard() {
                                                 onClick={() => {
                                                     router.push(url)
                                                 }}
+                                                mt={1}
                                                 variant="outline"
                                                 colorScheme="blue"
                                                 rounded="full"

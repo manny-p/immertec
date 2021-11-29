@@ -1,31 +1,8 @@
 import {Box, Flex, Heading, HStack, Text, useColorModeValue as mode} from '@chakra-ui/react'
-import {SignInWithGoogleButton, SignOutButton, UsernameForm} from '../../src/lib/firebase'
-import SEO from '@/components/SEO'
-// import Layout from '@/components/Layout'
-
+import SEO from '@/components/layout/SEO'
+import GoogleLoginButton from '@/components/shared/GoogleLoginButton';
 
 export default function RenderLoginPage() {
-
-    // {user ?
-    //     username && <SignOutButton/>
-    //     :
-    //     <SignInWithGoogleButton/>
-    // }
-
-    /** @param case1 */
-    // if user signed in but missing username then show <UsernameForm/>
-    // const user = true
-    // const username = null
-
-    /** @param case2 */
-    // if user signed in and has username then show <SignOutButton/>
-    const user = true
-    const username = true
-
-    /** @param case3 */
-        // if user is signed out then show <SignInWithGoogleButton/>
-    // const user = null
-    // const username = null
 
     return (
         <>
@@ -126,37 +103,8 @@ export default function RenderLoginPage() {
                                 mt="5"
                                 mb="10"
                             >
-
-                                {/*{user ?*/}
-                                {/*    !username && <UsernameForm/> // if user signed in but missing username then show <UsernameForm/>*/}
-                                {/*    :*/}
-                                {/*    <SignInWithGoogleButton/> // otherwise no user and show Sign In*/}
-                                {/*}*/}
-
-                                {/* (Logical AND) && */}
-                                {/* sign out */}
-                                {/*{user &&*/}
-                                {/*username && <SignOutButton/>*/}
-                                {/*}*/}
-
-                                {user ?
-                                    username && <SignOutButton/>
-                                    :
-                                    <SignInWithGoogleButton/>
-                                }
-
-                                {/*{user ?*/}
-                                {/*    !username ? // case1 - if user signed in but missing username then show <UsernameForm/>*/}
-                                {/*        <UsernameForm/>*/}
-                                {/*        : // case2 - if user signed in and has username then show <SignOutButton/>*/}
-                                {/*        <SignOutButton/>*/}
-                                {/*    : // case3 - if user is signed out then show <SignInButton/>*/}
-                                {/*    <SignInWithGoogleButton/>*/}
-                                {/*}*/}
+                                <GoogleLoginButton/>
                             </HStack>
-
-                            {/*<SigninForm/>*/}
-
                         </Box>
                     </Box>
                 </Box>
@@ -166,23 +114,23 @@ export default function RenderLoginPage() {
 }
 
 
-// import {Button} from '@chakra-ui/react'
-// import Image from 'next/image'
-// import styles from '@/styles/Header.module.scss'
-// import {getAuth, GoogleAuthProvider, signInWithPopup} from 'firebase/auth'
-// import toast from 'react-hot-toast'
-// import logo from '@/assets/immertec.png'
+// {user ?
+//     username && <SignOutButton/>
+//     :
+//     <SignInWithGoogleButton/>
+// }
 
-// <Button
-//     // onClick={handleSignIn}
-//     className={styles.login}
-//     bg="steelblue"
-//     color="white"
-//     size="sm"
-//     _hover={{
-//         bg: '#3b6cb3c9',
-//         color: 'white',
-//     }}
-// >
-//     Login
-// </Button>
+/** @param case1 */
+// if user signed in but missing username then show <UsernameForm/>
+// const user = true
+// const username = null
+
+/** @param case2 */
+// if user signed in and has username then show <SignOutButton/>
+// const user = true
+// const username = true
+
+/** @param case3 */
+// if user is signed out then show <SignInWithGoogleButton/>
+// const user = null
+// const username = null

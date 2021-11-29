@@ -1,4 +1,4 @@
-import Layout from '@/components/Layout';
+import Layout from '@/components/layout/Layout';
 import {Box, Divider, Flex, Grid, GridItem, Spacer, Stack} from '@chakra-ui/react';
 import {Logo} from '@/components/sidebar/Logo';
 import {SearchField} from '@/components/sidebar/SearchField';

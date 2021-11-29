@@ -5,7 +5,7 @@ export const CardWithAvatar = (props) => {
     return (
         <Flex
             direction="column"
-            minH={'32vh'}
+            minH={'auto'}
             overflowY={'scroll'}
             align="center"
             rounded="md"

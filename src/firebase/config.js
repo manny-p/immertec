@@ -17,7 +17,10 @@ export const auth = getAuth(app)
 
 export const provider = new GoogleAuthProvider()
 
-export const db = getFirestore()
+const db = getFirestore()
+
+console.log(db)
+export {db}
 
 export const userStateChange = (param) => onAuthStateChanged(auth, param)
 

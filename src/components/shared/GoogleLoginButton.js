@@ -1,33 +1,23 @@
-import * as React from 'react'
-import Link from 'next/Link'
 import {Button} from '@chakra-ui/react'
 import {FaGoogle} from 'react-icons/fa'
 
-const GoogleLoginButton = React.forwardRef(({href, onClick, props, link}, ref) => {
+const GoogleLoginButton = ({onClick, props}) => {
     return (
-        <>
-            {link &&
-            <Link {...link} passHref>
-                <a href={href} onClick={onClick} ref={ref}>
-                    <Button
-                        fontSize="sm"
-                        fontWeight="bold"
-                        size="lg"
-                        leftIcon={<FaGoogle fontSize="18px"/>}
-                        iconSpacing="3"
-                        colorScheme="red"
-                        width="full"
-                        {...props}
-                    >
-                        Continue with Google
-                    </Button>
-                </a>
-            </Link>
-            }
-        </>
+        <Button
+            onClick={onClick}
+            fontSize="sm"
+            fontWeight="bold"
+            size="lg"
+            leftIcon={<FaGoogle fontSize="18px"/>}
+            iconSpacing="3"
+            colorScheme="red"
+            width="full"
+            {...props}
+        >
+            Continue with Google
+        </Button>
     )
-})
+}
 
 export default GoogleLoginButton
-
 
