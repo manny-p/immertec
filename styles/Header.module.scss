@@ -1,0 +1,19 @@
+.header {
+  height: auto;
+  min-height: 10vh;
+}
+
+//media queries
+@media (max-width: 768px) {
+  .header {
+    padding: 1rem 0 0 0;
+  }
+}
+
+
+
+
+
+
+
+
