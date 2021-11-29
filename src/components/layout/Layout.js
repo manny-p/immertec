@@ -1,5 +1,5 @@
 import {Box} from '@chakra-ui/react'
-import Footer from '@/components/Footer';
+import Footer from '@/components/layout/Footer'
 
 const Layout = ({opacity, zIndex, props, children}) => {
     return (

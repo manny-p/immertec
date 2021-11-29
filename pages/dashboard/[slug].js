@@ -1,18 +1,18 @@
-import {Box, Button, Flex, Stack, SimpleGrid, useColorModeValue} from '@chakra-ui/react'
 import {useRouter} from 'next/router'
-import {useCollectionRealTime} from '@/hooks/useCollectionRealTime'
+import {useCollection} from '@/hooks/useCollection'
+// import {useCollection} from 'src/hooks/useCollection'
 import Layout from '@/components/Layout'
 import Loader from '@/components/Loader'
 import {CardWithAvatar} from '@/components/dashboard/CardWithAvatar'
 import {UserInfo} from '@/components/dashboard/UserInfo'
 import CustomButton from '@/components/CustomButton'
 import Container from '@/components/Container'
-import Sidebar from '@/components/sidebar/Sidebar';
-// import {useCollection} from '@/hooks/useCollection'
+import Sidebar from '@/components/sidebar/Sidebar'
+import {Box, Button, Flex, Stack, SimpleGrid, useColorModeValue} from '@chakra-ui/react'
 
 
 export default function renderUserDashboard() {
-    let {users} = useCollectionRealTime('users')
+    let {users} = useCollection('users')
     let router = useRouter()
 
     const loggedInAsUser = router.query?.slug
@@ -37,7 +37,7 @@ export default function renderUserDashboard() {
                                     p="1rem"
 
                                 >
-                                    <h1><strong>Logged In As:</strong>  {loggedInAsUser}</h1>
+                                    <h1><strong>Logged In As:</strong> {loggedInAsUser}</h1>
                                     <h1><strong>Permissions:</strong> {permissions.a}</h1>
                                     <CustomButton fontSize="1rem" size="sm"
                                                   rest={{bg: '#2c908b', color: 'white'}}

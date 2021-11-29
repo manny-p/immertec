@@ -1,8 +1,7 @@
-import styles from '@/styles/Navbar.module.scss';
-import {Button} from '@chakra-ui/react';
-import Link from 'next/link';
-import NavbarLogo from '@/components/NavbarLogo';
-
+import styles from '@/styles/Navbar.module.scss'
+import {Button} from '@chakra-ui/react'
+import Link from 'next/link'
+import NavbarLogo from '@/components/layout/NavbarLogo'
 
 const Navbar = () => {
 

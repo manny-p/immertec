@@ -1,20 +1,16 @@
-import {SignInWithGoogleButton} from '/src/lib/firebase'
 import Link from 'next/link'
-import Layout from '@/components/Layout'
 import {Box, Heading, LightMode, Stack, Text, useColorModeValue} from '@chakra-ui/react'
-import SEO from '@/components/SEO'
-import {Card} from '@/components/Card'
-import CompanyIconLogo from '@/components/CompanyIconLogo'
-import GoogleLoginButton from '@/components/GoogleLoginButton'
-import Footer from '@/components/Footer';
-
-
-// import {EmailLoginForm} from '@/components/EmailLoginForm'
-// import Image from 'next/image'
-// import companyLogo from '@/assets/immertec.png'
+import Layout from '@/components/layout/Layout'
+import SEO from '@/components/layout/SEO'
+import {Card} from '@/components/shared/Card'
+import CompanyLogo from '@/components/shared/CompanyIconLogo'
+import Footer from '@/components/layout/Footer'
+import {EmailLoginForm} from '@/components/shared/EmailLoginForm'
+import {ContinueWithGoogle} from '@/components/shared/ContinueWithGoogle'
 
 
 export default function Home() {
+
     return (
         <>
             <SEO title={'Home'}/>
@@ -28,13 +24,13 @@ export default function Home() {
                     minHeight={'85vh'}
                 >
                     <Card
-                    mt = "4.2rem"
+                        mt="4.2rem"
                         maxW="2xl"
                         mx="auto"
                         textAlign="center"
                     >
                         <Stack maxW="xs" mx="auto" spacing="8">
-                            <CompanyIconLogo
+                            <CompanyLogo
                                 height={50}
                                 props={{objectFit: 'contain'}}/>
                             <Stack spacing="3">
@@ -47,18 +43,15 @@ export default function Home() {
                             </Stack>
 
                             <LightMode>
-                                <SignInWithGoogleButton
-                                    link={{
-                                        href: `/dashboard`
-                                    }}
-                                />
+                                <ContinueWithGoogle/>
                             </LightMode>
-                            {/*<EmailLoginForm onSubmit={(e) => e.preventDefault()} />*/}
+
+                            <EmailLoginForm onSubmit={(e) => e.preventDefault()}/>
                             <Box fontSize="sm">
                                 <Text fontWeight="medium" color={useColorModeValue('gray.600', 'gray.400')}>
                                     Already have an account?
                                 </Text>
-                                <Link href="/login" fontWeight="semibold"
+                                <Link href={"/login"} fontWeight="semibold"
                                       color={useColorModeValue('teal.600', 'teal.300')}>
                                     Log back in
                                 </Link>

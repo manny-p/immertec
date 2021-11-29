@@ -1,12 +1,9 @@
 import {Box, Stack, StackDivider} from '@chakra-ui/react'
-import * as React from 'react'
-import {Copyright} from './Copyright'
-import {LinkGrid} from './LinkGrid'
-import {SocialMediaLinks} from '@/components/SocialMediaLinks';
-import {SubscribeForm} from '@/components/SubscribeForm';
-import CompanyIconLogo from '@/components/CompanyIconLogo';
-// import { SocialMediaLinks } from './SocialMediaLinks'
-// import { SubscribeForm } from './SubscribeForm'
+import {Copyright} from '@/components/shared/Copyright'
+import {LinkGrid} from '@/components/shared/LinkGrid'
+import {SocialMediaLinks} from '@/components/shared/SocialMediaLinks'
+import {SubscribeForm} from '@/components/shared/SubscribeForm'
+import CompanyIconLogo from '@/components/shared/CompanyIconLogo'
 
 const Footer = () => (
     <Box
