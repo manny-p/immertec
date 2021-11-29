@@ -18,7 +18,8 @@ export const useSignup = () => {
                 displayName: user.displayName,
                 avatar: user.photoURL,
                 isAdmin: false,
-                bio: ""
+                bio: "",
+                src:""
             })
             console.log('user has signed up', res, "USER: ", user)
         } catch (error) {

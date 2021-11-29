@@ -8,6 +8,7 @@ export const UserInfo = ({bio, email, isAdmin, name, ...stackProps}) => {
             <HStack>
                 <Text fontWeight="bold">{name}</Text>
             </HStack>
+
             <Text
                 fontSize="sm"
                 textAlign="center"

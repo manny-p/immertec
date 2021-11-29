@@ -20,9 +20,7 @@ export default function RenderUserIdProfilePage() {
 
     return (
         <Layout>
-            <Box>
-                <h1>User ID: {userID}</h1>
-            </Box>
+
 
             {
                 !users ?
@@ -41,7 +39,7 @@ export default function RenderUserIdProfilePage() {
                     >
                         {
                             users &&
-                            users.map(({bio, id, name, src}) => {
+                            users.map(({bio, id, name, src, email}) => {
 
                                 if (id === userID) {
                                     return (
@@ -71,13 +69,20 @@ export default function RenderUserIdProfilePage() {
                                                     <Heading size="lg" fontWeight="extrabold" letterSpacing="tight">
                                                         {name}
                                                     </Heading>
+
                                                     <Text color={useColorModeValue('gray.600', 'gray.400')}>
                                                         {bio}
+                                                        <ul style={{listStyle: 'none'}}>
+                                                            <strong>User ID:</strong>
+                                                            <li>{id}</li>
+                                                            <strong>Email:</strong>
+                                                            <li>{email}</li>
+                                                        </ul>
                                                     </Text>
 
                                                     <UserInfo
                                                         location="Denver, CO"
-                                                        website="mannyparra.com"
+                                                        website="immertec.com"
                                                         memberSince="Joined Nov. 2021"
                                                         mt="3"
                                                         // rest={{

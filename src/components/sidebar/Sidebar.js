@@ -13,10 +13,11 @@ const Sidebar = ({children}) => {
                 templateRows="repeat(2, 1fr)"
                 templateColumns="repeat(5, 1fr)"
                 bg="ghostwhite"
+                height="auto"
             >
                 <GridItem rowSpan={2} colSpan={1}>
                     <Flex
-                        height="100vh"
+                        minHeight="100vh"
                         width="100%"
                         direction="column"
                         bg="teal.600"

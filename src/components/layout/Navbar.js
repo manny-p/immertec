@@ -1,21 +1,42 @@
 import styles from '@/styles/Navbar.module.scss'
-import {Button} from '@chakra-ui/react'
+import {Box, Button, Flex, useColorModeValue} from '@chakra-ui/react'
 import Link from 'next/link'
+import {useEffect, useState} from 'react'
 import NavbarLogo from '@/components/layout/NavbarLogo'
+import {useCollection} from '@/hooks/useCollection';
+import {useRouter} from 'next/router';
+import CustomButton from '@/components/shared/CustomButton';
+import {signOut} from 'firebase/auth';
+import {auth} from '../../firebase/config'
+
+
+import {useLogout} from '@/hooks/useLogout'
+
 
 const Navbar = () => {
 
+    const [loggedIn, setLoggedIn] = useState(null)
+    const {users} = useCollection('users')
+    const router = useRouter()
+
+    // const {logout} = useLogout()
+    useEffect(() => {
+        setLoggedIn(router.query?.slug)
+    }, [router.query?.slug])
+
+    // const loggedInAsUser = router.query?.slug
     /** @param case2 */
     // if user signed in and has username then show <SignOutButton/>
     // const user = true
     // const username = true
 
     /** @param case3 */
-        // if user is signed out then show <SignInButton/>
-    const user = null
-    const username = null
+    // if user is signed out then show <SignInButton/>
+    // const user = null
+    // const username = null
 
     return (
+
         <nav className={styles.nav}>
             <ul style={{
                 display: 'flex',
@@ -23,7 +44,7 @@ const Navbar = () => {
                 alignItems: 'center',
                 listStyle: 'none',
             }}>
-                <li className={styles.li}>
+                <li>
                     <Link href="/" passHref>
                         <NavbarLogo
                             height={100}
@@ -34,55 +55,44 @@ const Navbar = () => {
                     </Link>
                 </li>
 
-                {/* a user is signed in and has username */}
-                {username && (
-                    <>
-                        <li>
-                            <Link href="/admin" passHref>
-                                <Button
-                                    bg="steelblue"
-                                    color="white"
-                                    size="sm"
-                                    _hover={{
-                                        bg: '#3b6cb3c9',
-                                        color: 'white',
-                                    }}
-                                >
-                                    Edit Team Profiles
-                                </Button>
-                            </Link>
-                        </li>
-                        <li>
-                            <Link href={`/${username}`}>
-                                <img src={user?.photoURL} alt={'avatar'}/>
-                            </Link>
-                        </li>
-                    </>
-                )}
+                <li>
+                    {
+                        users && loggedIn &&
+                        users.map(({id}) => {
+                            if (id === loggedIn) {
+                                return (
+                                    <CustomButton key={id} fontSize="1rem" size="sm"
+                                                  rest={{bg: '#2c908b', color: 'white'}}
+                                                  hover={{bg: '#2F68A9FF'}}
+                                                  onClick={() => {
+                                                      signOut(auth)
+                                                      setLoggedIn(null)
+                                                      router.push("/")
+                                                  }}
+                                    > Log Out
+                                    </CustomButton>
 
-                {/* user is not signed in OR has not created username */}
-                {!username && (
-                    <>
-                        <li>
-                            <Link href="/login" passHref>
-                                <Button
-                                    className={styles.login}
-                                    bg="steelblue"
-                                    color="white"
-                                    size="sm"
-                                    _hover={{
-                                        bg: '#634ab3',
-                                        color: 'white',
-                                    }}
-                                >
-                                    Login
-                                </Button>
+                                )
+                            }
+                        })
+                    }
+
+                    {
+                        !loggedIn && (
+                            <Link href={'/login'} passHref>
+                                <CustomButton fontSize="1rem" size="sm"
+                                              rest={{bg: '#2c908b', color: 'white'}}
+                                              hover={{bg: '#2F68A9FF'}}> Log In
+                                </CustomButton>
                             </Link>
-                        </li>
-                    </>
-                )}
+                        )
+
+                    }
+                </li>
+
             </ul>
         </nav>
+
     )
 }
 
