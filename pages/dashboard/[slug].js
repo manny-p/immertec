@@ -64,19 +64,15 @@ export default function RenderUserDashboard() {
             }
             {
                 !users ?
-                    <Container
-                        boxProps={{
-                            mt: '30vh',
-                            minHeight: '15rem'
-                        }}
-                        flexProps={{
-                            align: 'center',
-                            justify: 'center',
-                        }}
-
-                    >
-                        <Loader show/>
-                    </Container>
+                    <Box>
+                        <Flex
+                            mt="30vh"
+                            align="center"
+                            justify="center"
+                        >
+                            <Loader show/>
+                        </Flex>
+                    </Box>
                     :
                     <Box>
                         <Stack
@@ -86,6 +82,7 @@ export default function RenderUserDashboard() {
                             mt={2}
                             spacing="6"
                             width={'100%'}
+                            wrap={'wrap'}
                         >
                             {
                                 users &&
@@ -96,7 +93,7 @@ export default function RenderUserDashboard() {
                                         query: {slug: user.id},
                                     }
 
-                                    const {name, bio, src, isAdmin} = user
+                                    const {name, bio, isAdmin, email, displayName, avatar} = user
 
                                     return (
 
@@ -105,11 +102,10 @@ export default function RenderUserDashboard() {
                                             mb="2rem"
                                             key={user.id}
                                             avatarProps={{
-                                                src,
                                                 name,
                                             }}
                                         >
-                                            <UserInfo mt="3" name={name} bio={bio} isAdmin={isAdmin}/>
+                                            <UserInfo mt="3" email={email} name={name} bio={bio} isAdmin={isAdmin}/>
 
                                             <Button
                                                 onClick={() => {

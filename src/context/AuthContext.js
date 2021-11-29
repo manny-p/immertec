@@ -1,5 +1,5 @@
 import {onAuthStateChanged} from 'firebase/auth'
-import { createContext, useReducer, useEffect } from 'react'
+import {createContext, useReducer, useEffect, useDebugValue} from 'react'
 import { auth } from '/src/firebase/config'
 
 export const AuthContext = createContext(null)
@@ -11,7 +11,7 @@ export const authReducer = (state, action) => {
         case 'LOGOUT':
             return { ...state, user: null }
         case 'AUTH_IS_READY':
-            return { user: action.payload, authIsReady: true }
+            return {user: action.payload, authIsReady: true }
         default:
             return state
     }
@@ -29,6 +29,8 @@ export const AuthContextProvider = ({ children }) => {
             unsub()
         })
     }, [])
+
+    useDebugValue(state ?? 'loading...')
 
     console.log('AuthContext state:', state)
 

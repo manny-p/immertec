@@ -5,8 +5,7 @@ import toast from 'react-hot-toast'
 import GoogleLoginButton from '@/components/shared/GoogleLoginButton'
 
 import {useCollection} from '@/hooks/useCollection'
-import {FormLabel} from '@chakra-ui/react';
-import {useColorModeValue} from '@chakra-ui/system';
+
 
 export const ContinueWithGoogle = () => {
 

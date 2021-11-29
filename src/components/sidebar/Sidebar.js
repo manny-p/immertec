@@ -16,7 +16,7 @@ const Sidebar = ({children}) => {
             >
                 <GridItem rowSpan={2} colSpan={1}>
                     <Flex
-                        height="90vh"
+                        height="100vh"
                         width="100%"
                         direction="column"
                         bg="teal.600"

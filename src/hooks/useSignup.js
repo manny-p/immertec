@@ -1,27 +1,37 @@
 import {useState} from 'react'
-import {auth} from '/src/firebase/config'
+import {auth, db} from '/src/firebase/config'
 import {createUserWithEmailAndPassword} from 'firebase/auth'
 import {useAuthContext} from '/src/hooks/useAuthContext'
-
+import {setDoc, doc} from 'firebase/firestore'
 export const useSignup = () => {
     const [error, setError] = useState(null)
-    const {dispatch} = useAuthContext()
+    const { user } = useAuthContext()
 
-
-    const signup = (email, password) => {
-        setError(null)
-
-        createUserWithEmailAndPassword(auth, email, password)
-            .then(res => {
-                console.log('user has signed up', res.user)
-                dispatch({type: 'LOGIN', payload: res.user})
+    const signup = async (email, password) => {
+        console.log('hit signup')
+        try {
+            setError(null)
+            const res = await createUserWithEmailAndPassword(auth, email, password)
+            console.log("line 15:", res.user)
+            await setDoc(doc(db, "users", res.user.uid),{
+                email: user.email,
+                displayName: user.displayName,
+                avatar: user.photoURL,
+                isAdmin: false,
+                bio: ""
             })
-            .catch(err => {
-                setError(err.message)
-            })
+            console.log('user has signed up', res, "USER: ", user)
+        } catch (error) {
+            setError(error)
+        }
+
+        console.log('Line: 27', email, password)
+
     }
+    
     return {error, signup}
 }
+
 
 
 

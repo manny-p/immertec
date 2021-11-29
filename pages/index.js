@@ -13,9 +13,6 @@ import {DividerWithText} from '@/components/shared/DividerWithText';
 
 
 export default function Home() {
-    const [email, setEmail] = useState('')
-    const [password, setPassword] = useState('')
-    const {error, signup} = useSignup()
 
     return (
         <>
@@ -49,7 +46,7 @@ export default function Home() {
                             </Stack>
 
 
-                            <EmailLoginForm onSubmit={(e) => e.preventDefault()}/>
+                            <EmailLoginForm />
 
                             <LightMode>
                             <DividerWithText mt="6">or continue with</DividerWithText>
