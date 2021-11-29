@@ -2,6 +2,8 @@ import {Box, Flex, Heading, HStack, Text, useColorModeValue as mode} from '@chak
 import SEO from '@/components/layout/SEO'
 import GoogleLoginButton from '@/components/shared/GoogleLoginButton';
 
+import {EmailLoginFormAlt} from '@/components/login/EmailLoginFormAlt';
+
 export default function RenderLoginPage() {
 
     return (
@@ -77,9 +79,9 @@ export default function RenderLoginPage() {
                                 Sign in to continue
                             </Text>
                         </Box>
-                        <Box
+                       <Box
                             minW={{
-                                md: '420px',
+                                 md: '420px',
                             }}
                             mt="10"
                             rounded="xl"
@@ -103,7 +105,8 @@ export default function RenderLoginPage() {
                                 mt="5"
                                 mb="10"
                             >
-                                <GoogleLoginButton/>
+                                <EmailLoginFormAlt />
+                                {/*<GoogleLoginButton/>*/}
                             </HStack>
                         </Box>
                     </Box>

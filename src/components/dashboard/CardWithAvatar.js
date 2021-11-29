@@ -8,8 +8,8 @@ export const CardWithAvatar = ({avatarProps, children, ...rest}) => {
             <Flex
                 direction="column"
                 minH='20rem'
-                maxW='12rem'
-                overflowY={'scroll'}
+                maxW='10rem'
+                overflow={'scroll'}
                 align="center"
                 rounded="md"
                 padding="8"

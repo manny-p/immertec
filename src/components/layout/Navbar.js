@@ -14,7 +14,7 @@ const Navbar = () => {
         // if user is signed out then show <SignInButton/>
     const user = null
     const username = null
-    
+
     return (
         <nav className={styles.nav}>
             <ul style={{
